@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 -- テーブルの構造 `gs_an_table`
 --
 
-CREATE TABLE `gs_an_table` (
+CREATE TABLE `gs_user_table` (
   `id` int(12) NOT NULL,
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `age` int(3) NOT NULL,
@@ -53,7 +53,7 @@ INSERT INTO `gs_an_table` (`id`, `name`, `age`, `email`, `content`, `indate`) VA
 --
 -- テーブルのインデックス `gs_an_table`
 --
-ALTER TABLE `gs_an_table`
+ALTER TABLE `gs_user_table`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -63,5 +63,5 @@ ALTER TABLE `gs_an_table`
 --
 -- テーブルの AUTO_INCREMENT `gs_an_table`
 --
-ALTER TABLE `gs_an_table`
+ALTER TABLE `gs_user_table`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
