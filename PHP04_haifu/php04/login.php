@@ -14,9 +14,7 @@
     </style>
     <title>ログイン</title>
 </head>
-
 <body>
-
     <header>
         <nav class="navbar navbar-default">LOGIN</nav>
     </header>
@@ -35,8 +33,5 @@
         PW:<input type="password" name="lpw" />
         <input type="submit" value="LOGIN" />
     </form>
-
-
 </body>
-
 </html>

@@ -12,7 +12,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Head[Start] -->
     <header>
@@ -25,21 +24,18 @@
         </nav>
     </header>
     <!-- Head[End] -->
-
     <!-- Main[Start] -->
     <form method="POST" action="insert.php">
         <div class="jumbotron">
             <fieldset>
-                <legend>フリーアンケート</legend>
-                <label>名前：<input type="text" name="name"></label><br>
-                <label>Email：<input type="text" name="email"></label><br>
-                <label>年齢：<input type="text" name="age"></label><br>
-                <label><textArea name="naiyou" rows="4" cols="40"></textArea></label><br>
+                <legend>Book Mark</legend>
+                <label>タイトル：<input type="text" name="name"></label><br>
+                <label>著者：<input type="text" name="author"></label><br>
+                <label>出版社：<input type="text" name="publisher"></label><br>
                 <input type="submit" value="送信">
             </fieldset>
         </div>
     </form>
     <!-- Main[End] -->
 </body>
-
 </html>

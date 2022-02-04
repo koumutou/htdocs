@@ -1,20 +1,19 @@
 <?php
 //1. POSTデータ取得
-$name   = $_POST['name'];
-$email  = $_POST['email'];
-$naiyou = $_POST['naiyou'];
-$age    = $_POST['age']; //追加されています
+$book_title   = $_POST['book_title'];
+$author  = $_POST['author'];
+$publisher = $_POST['publisher'];
+
 
 //2. DB接続します
 require_once('funcs.php');
 $pdo = db_conn();
 
 //３．データ登録SQL作成
-$stmt = $pdo->prepare('INSERT INTO gs_an_table(name,email,age,naiyou,indate)VALUES(:name,:email,:age,:naiyou,sysdate());');
-$stmt->bindValue(':name', $name, PDO::PARAM_STR);
-$stmt->bindValue(':email', $email, PDO::PARAM_STR);
-$stmt->bindValue(':age', $age, PDO::PARAM_INT);
-$stmt->bindValue(':naiyou', $naiyou, PDO::PARAM_STR);
+$stmt = $pdo->prepare('INSERT INTO book_table(book_title,author,publisher,date)VALUES(:book_title,:author,:publisher,sysdate());');
+$stmt->bindValue(':book_title', $book_title, PDO::PARAM_STR);
+$stmt->bindValue(':author', $author, PDO::PARAM_STR);
+$stmt->bindValue(':publisher', $publisher, PDO::PARAM_STR);
 $status = $stmt->execute(); //実行
 
 //４．データ登録処理後

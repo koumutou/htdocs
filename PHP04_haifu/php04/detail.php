@@ -1,6 +1,10 @@
 <?php
-$id = $_GET['id']; //?id~**を受け取る
+session_start();
 require_once('funcs.php');
+loginCheck();
+
+
+$id = $_GET['id'];
 $pdo = db_conn();
 
 //２．データ登録SQL作成
@@ -47,13 +51,12 @@ if ($status == false) {
 
     <!-- Main[Start] -->
     <form method="POST" action="update.php">
-        <div class="jumbotron">
+    <div class="jumbotron">
             <fieldset>
                 <legend>[編集]</legend>
-                <label>名前：<input type="text" name="name" value="<?= $row['name'] ?>"></label><br>
-                <label>Email：<input type="text" name="email" value="<?= $row['email'] ?>"></label><br>
-                <label>年齢：<input type="text" name="age" value="<?= $row['age'] ?>"></label><br>
-                <label><textArea name="naiyou" rows="4" cols="40"><?= $row['naiyou'] ?></textArea></label><br>
+                <label>タイトル：<input type="text" name="title" value=<?= $view['title'] ?>></label><br>
+                <label>著者：<input type="text" name="author" value=<?= $view['author'] ?>></label><br>
+                <label>出版社：<input type="text" name="publisher" value=<?= $view['publisher'] ?>></label><br>
                 <input type="submit" value="送信">
                 <input type="hidden" name="id" value="<?= $id ?>">
             </fieldset>
