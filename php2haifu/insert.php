@@ -1,45 +1,32 @@
+<!-- 2 DBに接続する -->
+
 <?php
+// 関数
+require_once('funcs.php');
 
-/**
- * 1. index.phpのフォームの部分がおかしいので、ここを書き換えて、
- * insert.phpにPOSTでデータが飛ぶようにしてください。
- * 2. insert.phpで値を受け取ってください。
- * 3. 受け取ったデータをバインド変数に与えてください。
- * 4. index.phpフォームに書き込み、送信を行ってみて、実際にPhpMyAdminを確認してみてください！
- */
-
-//1. POSTデータ取得
+// 準備
+$title = $_POST['title'];
+$author = $_POST['author'];
+$publisher = $_POST['publisher'];
 
 
-//2. DB接続します
-try {
-  //ID:'root', Password: 'root'
-  $pdo = new PDO('mysql:dbname=  ;charset=utf8;host=localhost','******','******');
-} catch (PDOException $e) {
-  exit('DBConnectError:'.$e->getMessage());
-}
+// step 1 ------------------------------------
+$pdo = db_conn();
 
-//３．データ登録SQL作成
-
-// 1. SQL文を用意
-$stmt = $pdo->prepare("INSERT INTO gs_an_table(id, name, email, text, indate)VALUES(NULL, :name, :email, :text, sysdate())");
-
-//  2. バインド変数を用意
-$stmt->bindValue('******', *****, ****************);  //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue('******', *****, ****************);  //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue('******', *****, ****************);  //Integer（数値の場合 PDO::PARAM_INT)
-
-//  3. 実行
+// step 2 ------------------------------------
+$stmt = $pdo->prepare("INSERT INTO mbook_table(id, book_title, author, publisher, date)
+                       VALUES(NULL, :title, :author, :publisher, sysdate())");
+$stmt->bindValue(':book_title', $title, PDO::PARAM_STR);
+$stmt->bindValue(':author', $author, PDO::PARAM_STR);
+$stmt->bindValue(':publisher', $publisher, PDO::PARAM_STR);
 $status = $stmt->execute();
 
-//４．データ登録処理後
-if($status==false){
-  //SQL実行時にエラーがある場合（エラーオブジェクト取得して表示）
-  $error = $stmt->errorInfo();
-  exit("ErrorMessage:".$error[2]);
-}else{
-  //５．index.phpへリダイレクト
 
 
+//step 3 ------------------------------------
+if ($status === false) {
+    $error = $stmt->errorInfo();
+    exit("ErrorMessage:" . print_r($error, true));
+} else {
+    header('Location: index.php');
 }
-?>
