@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- テーブルの構造 `gs_an_table`
 --
 
+
 CREATE TABLE IF NOT EXISTS `gs_an_table` (
     `id` int(12) NOT NULL,
     `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
