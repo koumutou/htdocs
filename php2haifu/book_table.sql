@@ -58,6 +58,7 @@ ALTER TABLE `mbook_table`
 -- ダンプしたテーブルの AUTO_INCREMENT
 --
 
+
 --
 -- テーブルの AUTO_INCREMENT `book_table`
 --
